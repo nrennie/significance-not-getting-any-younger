@@ -8,7 +8,7 @@ library(patchwork)
 library(ggplot2)
 library(plotly)
 
-world_all <- readRDS("world_all.rds")
+world_all <- readRDS("data/world_all.rds")
 
 # Define UI for app that draws a histogram ----
 ui <- dashboardPage(

@@ -6,7 +6,7 @@ library(countrycode)
 library(patchwork)
 
 #load data
-world_data <- read.csv("WDIData.csv")
+world_data <- read.csv("data/WDIData.csv")
 world_male <- filter(world_data, Indicator.Name == "Life expectancy at birth, male (years)")[,c(2,5:65)]
 world_female <- filter(world_data, Indicator.Name == "Life expectancy at birth, female (years)")[,c(2,5:65)]
 world_total <- filter(world_data, Indicator.Name == "Life expectancy at birth, total (years)")[,c(2,5:65)]
@@ -51,14 +51,14 @@ p <- ggplot() +
   geom_text(data=data.frame(x=2019, y=81.3, label="Overall"), aes(x=x, y=y, label=label, colour="uk_total"), size=3, hjust=0, family="Times New Roman") +
   coord_cartesian(expand = F) +
   theme_light() +
-  theme(panel.background = element_rect(fill = "white", colour="white"),
-        plot.background = element_rect(fill = "white", colour="white"),
+  theme(panel.background = element_rect(fill = "transparent", colour="transparent"),
+        plot.background = element_rect(fill = "transparent", colour="transparent"),
         legend.background = element_rect(fill = "transparent"),
         plot.title = element_text(colour = "black", size=12, face="bold", hjust = 0, family="Times New Roman"),
         plot.subtitle = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
         plot.caption = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
         legend.position="none",
-        legend.key = element_rect(colour = "white", fill="white"),
+        legend.key = element_rect(colour = "transparent", fill="white"),
         plot.margin = unit(c(0.3, 0.5, 0.3, 0.3), "cm"), #top, right, bottom, left
         legend.spacing.x = unit(0.5,"cm"),
         legend.title = element_text(colour = "black", size=10, hjust = 0.5, family="Times New Roman"),
@@ -70,6 +70,7 @@ p <- ggplot() +
   )
 p
 ggsave(p, filename = "Fig1.jpg",  bg = "transparent", height=2.5, width=5, unit="in")
+ggsave(p, filename = "Fig1.png",  bg = "transparent", height=4, width=7, unit="in")
 
 ################################################# UK TEST #######################################################
 
@@ -98,9 +99,9 @@ p <- ggplot() +
   scale_x_continuous("", breaks=seq(1970, 2020, 10), limits=c(1960,2020)) +
   coord_cartesian(expand = F) +
   theme_light() +
-  theme(panel.background = element_rect(fill = "white", colour="white"),
-        plot.background = element_rect(fill = "white", colour="white"),
-        legend.background = element_rect(fill = "white"),
+  theme(panel.background = element_rect(fill = "transparent", colour="transparent"),
+        plot.background = element_rect(fill = "transparent", colour="transparent"),
+        legend.background = element_rect(fill = "transparent"),
         plot.title = element_text(colour = "black", size=12, face="bold", hjust = 0, family="Times New Roman"),
         plot.subtitle = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
         plot.caption = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
@@ -117,6 +118,7 @@ p <- ggplot() +
   )
 p
 ggsave(p, filename = "Fig2.jpg",  bg = "transparent", height=2.5, width=5, unit="in")
+ggsave(p, filename = "Fig2.png",  bg = "transparent", height=4, width=7, unit="in")
 
 ################################################# UK GENDER #######################################################
 
@@ -150,7 +152,7 @@ p1 <- ggplot(data=long_data, mapping=aes(x=year, y=life_exp, col=Indicator.Name)
   theme(plot.title = element_text(colour = "black", size=12, face="bold", hjust = 0, family="Times New Roman"),
         plot.subtitle = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
         plot.caption = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
-        legend.position=c(0.09,0.92),
+        legend.position=c(0.09,0.9),
         strip.background =element_rect(fill="#7fbf7b"),
         strip.text = element_text(colour = 'black', size=8, family="Times New Roman"),
         axis.title= element_text(colour = "black", size=10, family="Times New Roman"),
@@ -160,6 +162,7 @@ p1 <- ggplot(data=long_data, mapping=aes(x=year, y=life_exp, col=Indicator.Name)
         legend.key.height = unit(0.3, 'cm'),
         plot.margin = unit(c(0.2, 0.5, 0.2, 0.3), "cm"), #top, right, bottom, left
         legend.background = element_rect(fill = "transparent"),
+        plot.background = element_rect(fill = "transparent", colour="transparent"),
         legend.title = element_text(colour = "black", size=10, hjust = 0.5, family="Times New Roman"),
         legend.text = element_text(family="Times New Roman", colour="black", size=8, hjust = 0)
   )
@@ -181,6 +184,7 @@ p2 <- ggplot(data=long_data, mapping=aes(x=year, y=life_exp, col=Indicator.Name)
         plot.subtitle = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
         plot.caption = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
         legend.position="none",
+        plot.background = element_rect(fill = "transparent", colour="transparent"),
         strip.background =element_rect(fill="#7fbf7b"),
         strip.text = element_text(colour = 'black', size=8, family="Times New Roman"),
         axis.title.x = element_text(margin = margin(t = 0, r = 0, b = 0, l = 0)),
@@ -196,9 +200,11 @@ p2
 p <- p1 + p2 + plot_layout(nrow = 2) +
   plot_annotation(
     caption = 'N. Rennie | Source: World Bank’s World Development Indicators') &
-  theme(plot.caption = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"))
+  theme(plot.caption = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
+        plot.background = element_rect(fill = "transparent", colour="transparent"))
 p
 ggsave(p, filename = "Fig3.jpg",  bg = "transparent", height=4, width=5, unit="in")
+ggsave(p, filename = "Fig3.png",  bg = "transparent", height=6, width=7, unit="in")
 
 
 
@@ -249,9 +255,9 @@ p <- ggplot() +
   geom_polygon(data=world, aes(x=long, y=lat, group=group, fill=I(world_col)), color = "black", size=0.3) + 
   labs(title="Countries where life expectancy growth has stalled", caption = "N. Rennie | Source: World Bank’s World Development Indicators", x="") +
   theme_light() +
-  theme(panel.background = element_rect(fill = "white", colour="white"),
-        plot.background = element_rect(fill = "white", colour="white"),
-        legend.background = element_rect(fill = "white"),
+  theme(panel.background = element_rect(fill = "transparent", colour="transparent"),
+        plot.background = element_rect(fill = "transparent", colour="transparent"),
+        legend.background = element_rect(fill = "transparent"),
         plot.title = element_text(colour = "black", size=12, face="bold", hjust = 0, family="Times New Roman"),
         plot.subtitle = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
         plot.caption = element_text(colour = "black", size=10, hjust = 0, family="Times New Roman"),
@@ -269,3 +275,4 @@ p <- ggplot() +
   )
 p
 ggsave(p, filename = "Fig4.jpg",  bg = "transparent", height=2.5, width=4.5, unit="in")
+ggsave(p, filename = "Fig4.png",  bg = "transparent", height=4.5, width=7, unit="in")

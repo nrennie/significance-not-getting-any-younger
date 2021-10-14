@@ -1,0 +1,17 @@
+Package: WorldBank
+Type: Package
+Title: Life Expectancy Analysis
+Version: 0.1.0
+Authors@R: 
+    person(given = "Nicola",
+           family = "Rennie",
+           role = c("aut", "cre"),
+           email = "nrennie35@gmail.com")
+Description: Functions used in the analysis of life expectancy trends.
+License: `use_gpl3_license()`
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+	ggplot2

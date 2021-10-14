@@ -1,0 +1,20 @@
+/* Make text visible on inputs */
+.shiny-input-container {color: #00441b;}
+
+/* change slider colour */
+.js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: #00441b}
+.irs-from, .irs-to, .irs-single { background: #00441b }
+.irs-max {display: none;}
+.irs-min {display: none;}
+.irs-grid-text {color: white; bottom: 17px; z-index: 1}
+
+/* change title bg colour */
+.logo {background-color: #00441b !important;}
+     
+/* main sidebar */
+.skin-blue .main-sidebar {background-color: #a6dba0;}
+                      
+ /* navbar (rest of the header) */
+.skin-blue .main-header .navbar {background-color: #00441b;} 
+                      
+              

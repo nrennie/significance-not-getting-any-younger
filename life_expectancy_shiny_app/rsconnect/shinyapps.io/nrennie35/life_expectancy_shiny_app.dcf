@@ -1,0 +1,11 @@
+name: life_expectancy_shiny_app
+title:
+username:
+account: nrennie35
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5267556
+bundleId: 5328071
+url: https://nrennie35.shinyapps.io/life_expectancy_shiny_app/
+when: 1638651252.88051
+lastSyncTime: 1638651252.88051

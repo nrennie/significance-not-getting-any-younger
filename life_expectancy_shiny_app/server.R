@@ -3,54 +3,10 @@ library(shinydashboard)
 library(tidyverse)
 library(extrafont)
 library(plotly)
-
-#add package for this project
-library(WorldBank)
+library(WorldBank) #devtools::install_github("nrennie/significance_early_career_writing_competition/WorldBank/")
 
 #read in data
 app_data <- readRDS("data/app_data.rds")
-
-#### UI ####
-ui <- dashboardPage(
-  
-  #title of shiny ap
-  dashboardHeader(title = "Life Expectancy"),
-  
-  #add elements to sidebar
-  dashboardSidebar(
-    #choose country
-    selectInput("country", "Country:",
-                sort(unique(app_data$country_name))), 
-    
-    #choose window length
-    sliderInput("window", "Window length:",
-                min = 5, max = 15,
-                value = 10)
-    ),
-  
-  #display plots
-  dashboardBody(
-    #define css display 
-    tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "stylesheet.css")
-    ), 
-    fluidRow(
-      #life expectancy plot
-      box(title = "Life Expectancy", height=600, status = "primary", width = 6, 
-          checkboxGroupInput("gender", "Select:", 
-                             c("Female" = "Female", "Male" = "Male", "Overall" = "Overall"), 
-                             inline = T, selected=c("Female","Male","Overall")), 
-          plotlyOutput("lifePlot")),
-      #life expectancy growth plot
-      box(title = "Life Expectancy Growth", height=600, status = "primary", width = 6, 
-          radioButtons("gender2", "Select:", 
-                       c("Female" = "Female", "Male" = "Male", "Overall" = "Overall"), 
-                       selected=c("Overall"),inline = TRUE), 
-          plotlyOutput("growthPlot")),
-    )
-      
-  )
-)
 
 #### SERVER ####
 server <- function(input, output) {
@@ -93,8 +49,8 @@ server <- function(input, output) {
   #plot life expectancy growth
   output$growthPlot <- renderPlotly({
     select_data <- as.numeric(filter(app_data, 
-                          country_name == input$country,
-                          gender == input$gender2)[,3:63])
+                                     country_name == input$country,
+                                     gender == input$gender2)[,3:63])
     
     #apply function to estimate trend
     output <- est_trend(select_data, year_vec=1960:2020, window_val=input$window)
@@ -118,6 +74,3 @@ server <- function(input, output) {
     ggplotly(p)
   })
 }
-
-#### run app ####
-shinyApp(ui, server)

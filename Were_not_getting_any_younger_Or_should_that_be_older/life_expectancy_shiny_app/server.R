@@ -3,7 +3,7 @@ library(shinydashboard)
 library(tidyverse)
 library(extrafont)
 library(plotly)
-library(LifeExpectancyPkg) 
+library(WBLifeExpectancy) 
 
 #read in data
 app_data <- readRDS("data/app_data.rds")

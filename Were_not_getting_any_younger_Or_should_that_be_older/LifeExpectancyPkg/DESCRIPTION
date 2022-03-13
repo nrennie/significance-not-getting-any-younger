@@ -1,14 +1,14 @@
-Package: WorldBank
+Package: LifeExpectancyPkg
 Type: Package
-Title: Life Expectancy Analysis
-Version: 0.1.0
+Title: Life Expectancy Analysis of World Bank data
+Version: 1.0.0
 Authors@R: 
     person(given = "Nicola",
            family = "Rennie",
            role = c("aut", "cre"),
            email = "nrennie35@gmail.com")
 Description: Functions used in the analysis of life expectancy trends.
-License: `use_gpl3_license()`
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

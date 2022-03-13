@@ -11,7 +11,7 @@ est_trend(input_vec, year_vec = 1960:2020, window_val = 10)
 
 \item{year_vec}{A numeric vector of the years observed. Default 1960:2020,}
 
-\item{window_vec}{A numeric giving length of window. Default 10.}
+\item{window_val}{A numeric giving length of window. Default 10.}
 }
 \value{
 A numeric vector.

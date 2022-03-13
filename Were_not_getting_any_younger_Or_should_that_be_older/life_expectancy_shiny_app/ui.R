@@ -3,7 +3,7 @@ library(shinydashboard)
 library(tidyverse)
 library(extrafont)
 library(plotly)
-library(WorldBank) #devtools::install_github("nrennie/significance_early_career_writing_competition/WorldBank/")
+library(LifeExpectancyPkg) 
 
 #read in data
 app_data <- readRDS("data/app_data.rds")
